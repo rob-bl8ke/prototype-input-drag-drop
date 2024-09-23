@@ -2,6 +2,7 @@ class ProjectInput {
     templateElement: HTMLTemplateElement;
     hostElement: HTMLDivElement;
     element: HTMLFormElement;
+    titleInputElement: HTMLInputElement;
 
     constructor() {
         this.templateElement = document.getElementById('project-input') as HTMLTemplateElement;
@@ -9,7 +10,25 @@ class ProjectInput {
 
         const importedNode = document.importNode(this.templateElement.content, true);
         this.element = importedNode.firstElementChild as HTMLFormElement;
+        this.element.id = 'user-input';
+
+        this.titleInputElement = this.element.querySelector("#title") as HTMLInputElement;
+
+        this.configure();
         this.attach();
+    }
+
+    private submitHandler(event: Event) {
+        event.preventDefault();
+        console.log(this);
+        console.log(this.titleInputElement);
+        console.log(this.titleInputElement.value);
+    }
+
+    private configure() {
+        // Bind "this" (as in the context of configure) to "submitHandler" so that this
+        // refers to the same object (the class) that "configure() refers to." 
+        this.element.addEventListener('submit', this.submitHandler.bind(this));
     }
 
     private attach() {
