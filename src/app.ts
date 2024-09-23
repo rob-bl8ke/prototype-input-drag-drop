@@ -16,6 +16,8 @@ class ProjectInput {
     hostElement: HTMLDivElement;
     element: HTMLFormElement;
     titleInputElement: HTMLInputElement;
+    descriptionInputElement: HTMLInputElement;
+    peopleInputElement: HTMLInputElement;
 
     constructor() {
         this.templateElement = document.getElementById('project-input') as HTMLTemplateElement;
@@ -26,15 +28,35 @@ class ProjectInput {
         this.element.id = 'user-input';
 
         this.titleInputElement = this.element.querySelector("#title") as HTMLInputElement;
+        this.descriptionInputElement = this.element.querySelector("#description") as HTMLInputElement;
+        this.peopleInputElement = this.element.querySelector("#people") as HTMLInputElement;
 
         this.configure();
         this.attach();
     }
 
+    private gatherUserInput(): [string, string, number] | void {
+        const enteredTitle = this.titleInputElement.value;
+        const enteredDescription = this.descriptionInputElement.value;
+        const enteredPeople = this.peopleInputElement.value;
+
+        if (enteredTitle.trim().length === 0 || enteredDescription.trim().length === 0 || enteredPeople.trim().length === 0) {
+            alert('Invalid input, please try again!');
+            return;
+        } else {
+            return [enteredTitle, enteredDescription, +enteredPeople];
+        }
+    }
+ 
     @Autobind
     private submitHandler(event: Event) {
         event.preventDefault();
-        console.log(this.titleInputElement.value);
+        const userInput = this.gatherUserInput();
+        // A tuple is simply an array in JavaScript
+        if (Array.isArray(userInput)) {
+            const [title, desc, people] = userInput;
+            console.log(title, desc, people);
+        }
     }
 
     private configure() {
