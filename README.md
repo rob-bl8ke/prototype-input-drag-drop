@@ -16,3 +16,9 @@ npm install --save-dev webpack webpack-cli webpack-dev-server typescript ts-load
 - `ts-loader` and `typescript` - Installed locally. TypeScript intalled locally means your project won't break if you use a globally different version. The TS Loader tells WebPack how to convert TS to JavaScript.
 - `webpack-dev-server` - Use this to spin up a local server.
 - `clean-webpack-plugin` - Clean up the dist folder completely before building.
+
+# Other Libraries
+
+```
+npm i --save lodash
+```
