@@ -1,6 +1,6 @@
 import { Autobind } from "../decorators/autobind.js";
 import { projectState } from "../state/project-state.js";
-import { Validatable, validate } from "../util/validation.js";
+import * as Validation from "../util/validation.js";
 import { Component } from "./base-component.js";
 
 export class ProjectInput extends Component<HTMLDivElement, HTMLFormElement> {
@@ -34,26 +34,26 @@ export class ProjectInput extends Component<HTMLDivElement, HTMLFormElement> {
     }
 
     private gatherUserInput(): [string, string, number] | void {
-        const enteredTitle: Validatable = {
+        const enteredTitle: Validation.Validatable = {
             value: this.titleInputElement.value,
             required: true,
             minLength: 5,
         };
-        const enteredDescription: Validatable = {
+        const enteredDescription: Validation.Validatable = {
             value: this.descriptionInputElement.value,
             required: true,
             minLength: 5,
         };
-        const enteredPeople: Validatable = {
+        const enteredPeople: Validation.Validatable = {
             value: +this.peopleInputElement.value,
             required: true,
             min: 1,
         };
 
         if (
-            !validate(enteredTitle) ||
-            !validate(enteredDescription) ||
-            !validate(enteredPeople)
+            !Validation.validate(enteredTitle) ||
+            !Validation.validate(enteredDescription) ||
+            !Validation.validate(enteredPeople)
         ) {
             alert("Invalid input, please try again!");
             return;
