@@ -2,8 +2,8 @@
   "compilerOptions": {
     /* Basic Options */
     "target": "es6",                          /* Specify ECMAScript target version: 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017','ES2018' or 'ESNEXT'. */
-    // Required to get the TypeScript namespaces working correctly
-    "module": "amd",                          /* Specify module code generation: 'none', 'commonjs', 'amd', 'system', 'umd', 'es2015', or 'ESNext'. */
+    // Required to get the ES modules working correctly
+    "module": "es2015",                          /* Specify module code generation: 'none', 'commonjs', 'amd', 'system', 'umd', 'es2015', or 'ESNext'. */
     "lib": [
       "dom",
       "es6",
@@ -17,7 +17,7 @@
     // "declarationMap": true,                /* Generates a sourcemap for each corresponding '.d.ts' file. */
     "sourceMap": true,                     /* Generates corresponding '.map' file. */
     // Output to a single js file in order to use TypeScript namespaces correctly
-    "outFile": "./dist/bundle.js",         /* Concatenate and emit output to single file. */
+    // "outFile": "./dist/bundle.js",         /* Concatenate and emit output to single file. */
     "outDir": "./dist",                        /* Redirect output structure to the directory. */
     "rootDir": "./src",                       /* Specify the root directory of input files. Use to control the output directory structure with --outDir. */
     // "composite": true,                     /* Enable project compilation */
