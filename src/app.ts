@@ -191,6 +191,10 @@ class ProjectList extends Component<HTMLDivElement, HTMLElement> implements Drag
     }
     
     configure() {
+        this.element.addEventListener('dragover', this.dragOverHandler);
+        this.element.addEventListener('drop', this.dropHandler);
+        this.element.addEventListener('dragleave', this.dragLeaveHandler);
+
         projectState.addListener((projects: Project[]) => {
             const relevantProjects = projects.filter(project => {
                 if (this.type === 'active') {
@@ -204,14 +208,20 @@ class ProjectList extends Component<HTMLDivElement, HTMLElement> implements Drag
         });
     }
 
-    dragOverHandler(event: DragEvent): void {
-        throw new Error("Method not implemented.");
+    @Autobind
+    dragOverHandler(_: DragEvent): void {
+        const listEl = this.element.querySelector('ul');
+        listEl!.classList.add('droppable');
     }
-    dropHandler(event: DragEvent): void {
-        throw new Error("Method not implemented.");
+
+    dropHandler(_: DragEvent): void {
+        // not implemented yet
     }
-    dragLeaveHandler(event: DragEvent): void {
-        throw new Error("Method not implemented.");
+
+    @Autobind
+    dragLeaveHandler(_: DragEvent): void {
+        const listEl = this.element.querySelector('ul');
+        listEl!.classList.remove('droppable');
     }
 
     renderContent() {
