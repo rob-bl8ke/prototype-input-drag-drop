@@ -140,7 +140,7 @@ abstract class Component<T extends HTMLElement, U extends HTMLElement> {
     abstract renderContent(): void;
 }
 
-class ProjectItem extends Component<HTMLUListElement, HTMLLIElement> {
+class ProjectItem extends Component<HTMLUListElement, HTMLLIElement> implements Draggable {
     private project: Project;
 
     get persons() {
@@ -157,6 +157,13 @@ class ProjectItem extends Component<HTMLUListElement, HTMLLIElement> {
 
         this.configure();
         this.renderContent();
+    }
+    
+    dragStartHandler(event: DragEvent): void {
+        throw new Error("Method not implemented.");
+    }
+    dragEndHandler(event: DragEvent): void {
+        throw new Error("Method not implemented.");
     }
 
     configure(): void {
