@@ -180,7 +180,7 @@ class ProjectItem extends Component<HTMLUListElement, HTMLLIElement> implements 
     }
 }
 
-class ProjectList extends Component<HTMLDivElement, HTMLElement> {
+class ProjectList extends Component<HTMLDivElement, HTMLElement> implements DragTarget {
     assignedProjects: Project[] = [];
 
     constructor(private type: 'active' | 'finished') {
@@ -189,7 +189,7 @@ class ProjectList extends Component<HTMLDivElement, HTMLElement> {
         this.configure();
         this.renderContent();
     }
-
+    
     configure() {
         projectState.addListener((projects: Project[]) => {
             const relevantProjects = projects.filter(project => {
@@ -202,6 +202,16 @@ class ProjectList extends Component<HTMLDivElement, HTMLElement> {
             this.assignedProjects = relevantProjects;
             this.renderProjects();
         });
+    }
+
+    dragOverHandler(event: DragEvent): void {
+        throw new Error("Method not implemented.");
+    }
+    dropHandler(event: DragEvent): void {
+        throw new Error("Method not implemented.");
+    }
+    dragLeaveHandler(event: DragEvent): void {
+        throw new Error("Method not implemented.");
     }
 
     renderContent() {
