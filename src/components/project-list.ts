@@ -2,11 +2,11 @@ import { Autobind } from "../decorators/autobind.js";
 import { DragTarget } from "../models/drag-drop.js";
 import { Project, ProjectStatus } from "../models/project.js";
 import { projectState } from "../state/project-state.js";
-import { Component } from "./base-component.js";
+import ComponentBase from "./base-component.js";
 import { ProjectItem } from "./project-item.js";
 
 export class ProjectList
-    extends Component<HTMLDivElement, HTMLElement>
+    extends ComponentBase<HTMLDivElement, HTMLElement>
     implements DragTarget
 {
     assignedProjects: Project[] = [];
